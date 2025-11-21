@@ -7,6 +7,9 @@ import { ZyloProvider } from "@/lib/zylo/provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { CartProvider } from "@/contexts/CartContext";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,8 +22,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Elegant Flora Boutique",
-  description: "Beautiful AI-powered website creation platform",
+  title: "Aurora Atelier - Curated Goods for Refined Living",
+  description: "Discover premium electronics, accessories, and home decor. Shop our curated collection of quality products.",
 };
 
 export default function RootLayout({
@@ -45,9 +48,15 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               <TooltipProvider>
-                {children}
-                <Toaster />
-                <Sonner />
+                <CartProvider>
+                  <Header />
+                  <main className="flex-1">
+                    {children}
+                  </main>
+                  <Footer />
+                  <Toaster />
+                  <Sonner />
+                </CartProvider>
               </TooltipProvider>
             </ThemeProvider>
           </ZyloProvider>

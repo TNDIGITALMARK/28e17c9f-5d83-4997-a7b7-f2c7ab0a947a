@@ -1,59 +1,92 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================
+   AURORA ATELIER E-COMMERCE DESIGN SYSTEM
+   Extracted from design reference: ai-generated-preview.png
+
+   COLOR PALETTE:
+   - Primary: Coral/Salmon Red #EB5757 (HSL: 0 79% 63%)
+   - Background: Light Warm Gray #FAFAFA (HSL: 0 0% 98%)
+   - Card: Pure White #FFFFFF (HSL: 0 0% 100%)
+   - Text Primary: Dark Gray #1A1A1A (HSL: 0 0% 10%)
+   - Text Secondary: Medium Gray #757575 (HSL: 0 0% 46%)
+   - Footer: Dark Charcoal #3A3A3A (HSL: 0 0% 23%)
+   - Accent: Teal #00A896 (HSL: 174 100% 33%)
+
+   TYPOGRAPHY:
+   - Font Family: Inter (sans-serif)
+   - Heading: 500-600 weight
+   - Body: 400 weight
+   - Button: 500 weight, uppercase
+
+   SPACING:
+   - Container: 1200-1400px max-width
+   - Section padding: 60-80px vertical
+   - Card gaps: 20-24px
+   - Card padding: 16-20px
+
+   EFFECTS:
+   - Card shadow: 0 2px 8px rgba(0,0,0,0.08)
+   - Hover shadow: 0 4px 12px rgba(0,0,0,0.12)
+   - Border radius cards: 8px
+   - Border radius buttons: 6px
+   ============================================ */
 
 :root {
-  /* Pure white background with crisp black text */
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
+  /* Background: Light warm gray from design */
+  --background: 0 0% 98%;
+  --foreground: 0 0% 10%;
 
-  /* Clean white cards with black text */
+  /* Cards: Pure white with dark text */
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 0%;
+  --card-foreground: 0 0% 10%;
 
-  /* Popovers with white background */
+  /* Popovers: White background */
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 0%;
+  --popover-foreground: 0 0% 10%;
 
-  /* Primary: Black with white text */
-  --primary: 0 0% 0%;
+  /* Primary: Coral/Salmon Red for CTAs - EXACT from design */
+  --primary: 0 79% 63%;
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Light gray background with black text */
-  --secondary: 0 0% 97%;
-  --secondary-foreground: 0 0% 0%;
+  /* Secondary: Light neutral gray */
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 10%;
 
-  /* Muted: Subtle gray with darker text */
+  /* Muted: Subtle gray with medium gray text */
   --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 40%;
+  --muted-foreground: 0 0% 46%;
 
-  /* Accent: Light gray */
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 0%;
+  /* Accent: Teal for highlights - EXACT from design */
+  --accent: 174 100% 33%;
+  --accent-foreground: 0 0% 100%;
 
-  /* Destructive: Clean red */
+  /* Destructive: Keep red for errors */
   --destructive: 0 70% 50%;
   --destructive-foreground: 0 0% 100%;
 
-  /* Borders: Subtle gray */
+  /* Borders: Subtle light gray */
   --border: 0 0% 90%;
   --input: 0 0% 90%;
-  --ring: 0 0% 0%;
+  --ring: 0 79% 63%;
 
-  /* Minimal rounded corners */
-  --radius: 0.375rem;
+  /* Border radius from design */
+  --radius: 0.5rem;
 
-  /* Sidebar: Clean white with black text */
+  /* Footer: Dark charcoal - EXACT from design */
+  --footer-background: 0 0% 23%;
+  --footer-foreground: 0 0% 90%;
+
+  /* Sidebar: White with dark text */
   --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 0 0% 0%;
-  --sidebar-primary: 0 0% 0%;
+  --sidebar-foreground: 0 0% 10%;
+  --sidebar-primary: 0 79% 63%;
   --sidebar-primary-foreground: 0 0% 100%;
   --sidebar-accent: 0 0% 96%;
-  --sidebar-accent-foreground: 0 0% 0%;
+  --sidebar-accent-foreground: 0 0% 10%;
   --sidebar-border: 0 0% 90%;
-  --sidebar-ring: 0 0% 0%;
+  --sidebar-ring: 0 79% 63%;
 }
 
 .dark {
@@ -168,36 +201,155 @@ All colors MUST be HSL.
   border-color: hsl(var(--border));
 }
 
+/* ============================================
+   GLOBAL BASE STYLES - AURORA ATELIER
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
 body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
   font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
 }
 
-/* Minimal, clean typography */
-h1, h2, h3, h4, h5, h6 {
+/* Typography Hierarchy - EXACT from design */
+h1 {
+  font-size: 3.5rem;
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   color: hsl(var(--foreground));
+  margin: 0 0 1.5rem 0;
 }
 
-/* Clean button styles */
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: hsl(var(--foreground));
+  margin: 0 0 1.25rem 0;
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: hsl(var(--foreground));
+  margin: 0 0 1rem 0;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: hsl(var(--foreground));
+  margin: 0 0 0.875rem 0;
+}
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: hsl(var(--foreground));
+  margin: 0 0 0.75rem 0;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: hsl(var(--foreground));
+  margin: 0 0 0.75rem 0;
+}
+
+p {
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+a {
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: hsl(var(--primary));
+}
+
+/* Button Defaults - EXACT from design */
 button {
+  font-family: inherit;
   font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Subtle shadows for depth */
+/* Form Element Defaults */
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 3px hsla(var(--primary) / 0.1);
+}
+
+/* Shadow System - EXACT from design */
 .shadow-sm {
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .shadow {
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .shadow-md {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.shadow-lg {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-hover:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
 }
